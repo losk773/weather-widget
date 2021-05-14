@@ -1,0 +1,1 @@
+export const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
