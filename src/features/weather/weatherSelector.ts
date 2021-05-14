@@ -4,7 +4,7 @@ import { TCurrentWeather, TWeatherState } from './weatherTypes';
 export const getWeather = (state: RootState): TWeatherState => state.weather;
 
 export const getWeatherTimezone = (state: RootState): string => {
-  return state.weather.data ? state.weather.data.timezoone : ''
+  return state.weather.data ? state.weather.data.timezone : ''
 };
 
 export const getWeatherLocation = (state: RootState): string => {

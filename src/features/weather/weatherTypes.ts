@@ -27,7 +27,7 @@ export type TWeatherDay = {
 export type TWeatherState = {
   data: {
     location: string;
-    timezoone: string;
+    timezone: string;
     current: TCurrentWeather;
     daily: TWeatherDay[];
   } | null;
