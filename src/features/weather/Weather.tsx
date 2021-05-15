@@ -5,6 +5,7 @@ import './weather.scss';
 import { CurrentWeather } from "./CurrentWeather";
 import { WeatherForecast } from "./WeatherForecast";
 import { Spinner } from "../../components/Spinner";
+import { CloudIcon } from "../../components/CloudIcon";
 
 const Weather = () => {
   const weather = useAppSelector(getWeather);
@@ -18,9 +19,10 @@ const Weather = () => {
 
     if (weather.error) {
       return (
-        <>
-          We could not find weather information for the location above
-        </>
+        <div className="error-container">
+          <CloudIcon />
+          <div className="error-container__message">{weather.error}</div>
+        </div>
       );
     }
     

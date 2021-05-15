@@ -29,3 +29,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.error-container {
+  text-align: center;
+  margin-top: 25px;
+  
+  &__message {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
