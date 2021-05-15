@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const WeatherForecastItem: React.FC<Props> = ({weatherInfo, index, selected, onClick}) => {
-  const timezone = useAppSelector(getWeatherTimezone);
+  const timezone = useAppSelector(getWeatherTimezone) || '';
 
   const handleClick = (index: number) => {
     onClick(index)

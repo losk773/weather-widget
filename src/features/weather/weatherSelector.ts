@@ -16,24 +16,24 @@ export const getWeatherByIndex = (state: RootState, index: number): TCurrentWeat
   } : null;
 };
 
-export const getWeatherTimezone = (state: RootState): string => {
-  return state.weather.data ? state.weather.data.timezone : ''
+export const getWeatherTimezone = (state: RootState): string | undefined => {
+  return  state.weather?.data?.timezone;
 };
 
-export const getWeatherLocation = (state: RootState): string => {
-  return state.weather.data ? state.weather.data.location : ''
+export const getWeatherLocation = (state: RootState): string | undefined => {
+  return state.weather?.data?.location;
 };
 
-export const getWeatherAir = (state: RootState): number => {
-  return state.weather.data ? state.weather.data.air : 1;
+export const getWeatherAir = (state: RootState): number | undefined => {
+  return state.weather?.data?.air;
 };
 
 export const getSelectedWeatherDay = (state: RootState): number => {
   return state.weather.selected;
 };
 
-export const getCurrentWeather = (state: RootState): TCurrentWeather | null => {
-  return state.weather.data ? state.weather.data.current : null;
+export const getCurrentWeather = (state: RootState): TCurrentWeather |undefined => {
+  return state.weather?.data?.current;
 }
 
 export const getWeatherUnit = (state: RootState): string => {

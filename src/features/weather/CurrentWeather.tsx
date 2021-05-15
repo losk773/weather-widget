@@ -24,8 +24,8 @@ interface Props {
 
 export const CurrentWeather: React.FC<Props> = ({current}) => {
   const selectedWeatherDay = useAppSelector(getSelectedWeatherDay);
-  const location = useAppSelector(getWeatherLocation);
-  const timezone = useAppSelector(getWeatherTimezone);
+  const location = useAppSelector(getWeatherLocation) || '';
+  const timezone = useAppSelector(getWeatherTimezone) || '';
   const air = useAppSelector(getWeatherAir);
   const unit = useAppSelector(getWeatherUnit);
   const dispatch = useDispatch();
