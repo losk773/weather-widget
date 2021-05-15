@@ -1,9 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import Weather from './features/weather/Weather';
 
-function App() {
+const App = () => {
   return (
-    <div className="App"></div>
+    <div className="App">
+      <Weather />
+    </div>
   );
 }
 
