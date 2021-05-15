@@ -1,4 +1,3 @@
-import { tempUnits } from '../constant/tempUnits';
 import apiService from './apiService';
 
 const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
