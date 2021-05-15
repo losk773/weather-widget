@@ -8,6 +8,7 @@ import {
   weatherForecastSuccess,
 } from "./weatherActions";
 import { TWeather, TWeatherDay } from "./weatherTypes";
+import { airTypes } from "../../constant/airTypes";
 
 export const fetchWeatherForecast = (
   value: string,
@@ -21,13 +22,13 @@ export const fetchWeatherForecast = (
     if (!locationDataArray.length) throw new Error('Location data not found');
 
     const locationInfo = locationDataArray.shift();
-    const { data: weatherData } = await WeatherService
-      .getForecastWeather(locationInfo.lat, locationInfo.lon, unit);
-
+    const { data: weatherData } = await WeatherService.getForecastWeather(locationInfo.lat, locationInfo.lon, unit);
+    const { data: airData } = await WeatherService.getAirPollution(locationInfo.lat, locationInfo.lon);
 
     const transformedWeatherData = {
       location: `${locationInfo.name}, ${locationInfo.country}`,
       timezone: weatherData.timezone,
+      air: airTypes[airData.list[0].main.aqi],
       current: {
         dt: weatherData.current.dt,
         temp: weatherData.current.temp,
@@ -50,8 +51,9 @@ export const fetchWeatherForecast = (
           min: item.temp.min
         },
         humidity: item.humidity,
-        wind_speed: item.wind_speed
-      }))
+        wind_speed: item.wind_speed,
+        wind_deg: item.wind_deg,
+      })),
     };
 
     dispatch(weatherForecastSuccess(transformedWeatherData));

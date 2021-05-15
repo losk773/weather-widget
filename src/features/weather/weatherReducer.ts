@@ -6,6 +6,7 @@ const initState: TWeatherState = {
   loading: false,
   error: null,
   unit: tempUnits.METRIC,
+  selected: 0,
 }
 
 export const weatherReducer = (state: TWeatherState = initState, action: TWeatherAction) => {
@@ -18,6 +19,8 @@ export const weatherReducer = (state: TWeatherState = initState, action: TWeathe
       return { ...state, data: null, loading: false, error: action.payload };
     case WeatherActionTypes.SET_WEATHER_UNIT:
       return { ...state, unit: action.payload };
+    case WeatherActionTypes.SELECT_WEATHER_DAY:
+      return { ...state, selected: action.payload };
     default:
       return state;
   }

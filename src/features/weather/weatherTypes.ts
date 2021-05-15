@@ -15,8 +15,8 @@ export type TCurrentWeather = {
 export type TWeatherDay = {
   dt: number;
   temp: {
-    max: number,
-    min: number
+    max: number;
+    min: number;
   };
   weather: TWeather[];
   humidity: number;
@@ -28,12 +28,14 @@ export type TWeatherState = {
   data: {
     location: string;
     timezone: string;
+    air: number;
     current: TCurrentWeather;
     daily: TWeatherDay[];
   } | null;
   loading: boolean;
   error: string| null;
   unit: string;
+  selected: number;
 }
 
 export enum WeatherActionTypes {
@@ -41,6 +43,7 @@ export enum WeatherActionTypes {
   WEATHER_FORECAST_SUCCESS = 'WEATHER_FORECAST_SUCCESS',
   WEATHER_FORECAST_ERROR = 'WEATHER_FORECAST_ERROR',
   SET_WEATHER_UNIT = 'SET_WEATHER_UNIT',
+  SELECT_WEATHER_DAY = 'SELECT_WEATHER_DAY',
 }
 
 type TWeatherForecastRequest = {
@@ -62,8 +65,14 @@ type TWeatherUnit = {
   payload: string;
 }
 
+type TSelectedWeatherDay = {
+  type: WeatherActionTypes.SELECT_WEATHER_DAY;
+  payload: number;
+}
+
 export type TWeatherAction = 
   TWeatherForecastRequest | 
   TWeatherForecastSuccess | 
   TWeatherForecastError |
-  TWeatherUnit;
+  TWeatherUnit |
+  TSelectedWeatherDay;
