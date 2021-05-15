@@ -18,3 +18,8 @@ export const setWeatherUnit = (unit: string): TWeatherAction => ({
   type: WeatherActionTypes.SET_WEATHER_UNIT,
   payload: unit,
 });
+
+export const selectWeatherDay = (index: number): TWeatherAction => ({
+  type: WeatherActionTypes.SELECT_WEATHER_DAY,
+  payload: index,
+})
