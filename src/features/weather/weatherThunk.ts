@@ -19,7 +19,9 @@ export const fetchWeatherForecast = (
 
     const { data: locationDataArray } = await WeatherService.getGeoByLocationName(value);
 
-    if (!locationDataArray.length) throw new Error('Location data not found');
+    if (!locationDataArray.length) {
+      throw new Error('We could not find weather information for the location above');
+    }
 
     const locationInfo = locationDataArray.shift();
     const { data: weatherData } = await WeatherService.getForecastWeather(locationInfo.lat, locationInfo.lon, unit);
@@ -58,6 +60,6 @@ export const fetchWeatherForecast = (
 
     dispatch(weatherForecastSuccess(transformedWeatherData));
   } catch (error) {
-    dispatch(weatherForecastError(error));
+    dispatch(weatherForecastError(error.message));
   }
 }
